@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stwórz swoją koszulkę!</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="index.js" ></script>
+</head>
+<body>
+	<center>
+<h1>Stwórz Swoją Koszulkę</h1>
+<hr>
+<canvas width="" height="200" id="tshirtCanvas">
+<p>Aby korzystać z aplikacji zaktualizuj swoją przeglądarkę</p>
+</canvas>
+<form>
+     <p>
+          <label for="backgroundColor">Wybierz kolor tła:</label>
+          <select id="backgroundColor">
+               <option value="white" selected="selected">biały</option>
+               <option value="black">czarny</option>
+               <!--Tu Coś będzie-->
+          </select>
+     </p>
+     <p>
+          <label for="shape">Kółka czy kwadraty?</label>
+          <select id="shape">
+               <option value="none" selected="selected">nic</option>
+               <option value="circles">kółka</option>
+               <option value="squares">kwadraty</option>
+          </select>
+     </p>
+     <p>
+          <label for="foregroundColor">Wybierz kolor tekstu:</label>
+          <select id="foregroundColor">
+               <option value="black" selected="selected">czarny</option>
+               <option value="white">biały</option>
+          </select>
+     </p>
+     <p>
+          <label for="tweets">Wybierz tweet:</label>
+          <select id="tweets" style="width:500px">
+          </select>
+     </p>
+     <p>
+          <input type="button" id="previewButton" value="Podgląd">
+     </p>
+     <!--Script-->
+     <script src="http://twitter.com/statuses/user_timeline/timoreilly.json?callback=updateTweets"></script>
+
+</form>
+</center>
+
+</body>
+</html>
