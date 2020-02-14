@@ -1,10 +1,8 @@
-/* tweetshirt.js */
 
 window.onload = function() {
 	var button = document.getElementById("previewButton");
 	button.onclick = previewHandler;
 
-	// Niespodzianka
 	makeImage();
 }
 
@@ -32,7 +30,7 @@ function previewHandler() {
 	drawBird(canvas, context);
 }
 
-// Tutaj czyścimy tło i ustalamy jego kolor
+// color canvas
 function fillBackgroundColor(canvas, context) {
 	var selectObj = document.getElementById("backgroundColor");
 	var index = selectObj.selectedIndex;
@@ -56,7 +54,7 @@ function drawSquare(canvas, context) {
 	context.fillRect(x, y, w, w);
 }
 
-// Rysuje losowo rozmieszczone kółka
+// circle
 function drawCircle(canvas, context) {
 	var radius = Math.floor(Math.random() * 36);
 	var x = Math.floor(Math.random() * canvas.width);
@@ -64,15 +62,11 @@ function drawCircle(canvas, context) {
 
 	context.beginPath();
 	context.arc(x, y, radius, 0, degreesToRadians(360), true);
-
-	// Skorzystaj z tego kodu, jeżeli chcesz
-	// mieć bardziej "twitterową" kolorystykę
-	//context.fillStyle = "rgb(0, 173, 239)";
 	context.fillStyle = "lightblue";
 	context.fill();
 }
 
-// Wypisuje wszystkie teksty, włącznie z tweetem
+// text
 function drawText(canvas, context) {
 	var selectObj = document.getElementById("foregroundColor");
 	var index = selectObj.selectedIndex;
@@ -90,28 +84,12 @@ function drawText(canvas, context) {
 	var tweet = selectObj[index].value;
 	context.font = "italic 1.2em serif";
 	context.fillText(tweet, 30, 100);
-
-	
-	// i usuń powyższy wiersz context.fillText
-/*
-	if (tweet.length > 60) {
-		var tweetLines = splitIntoLines(tweet);
-		for (var i = 0; i < tweetLines.length; i++) {
-			context.fillText(tweetLines[i], 30, 70+(i*25));
-		}
-	}
-	else {
-		context.fillText(tweet, 30, 100);
-	}
-*/
-
 	context.font = "bold 1em sans-serif";
 	context.textAlign = "right";
 	context.fillText("i dostałem tylko tę nędzną koszulkę!", 
 		canvas.width-20, canvas.height-40);
 }
 
-// Rysuje obrazek z twitterowym ptaszkiem
 function drawBird(canvas, context) {
 	var twitterBird = new Image();
 	twitterBird.src = "twitterBird.png";
@@ -135,25 +113,20 @@ function updateTweets(tweets) {
 
     tweet.text = "Jeżeli warto o tym tweetować, warto też wrzucić na #tweetowakoszulka";
 
-		// tworzy element option
 		var option = document.createElement("option");
 		option.text = tweet.text;
 
-		// wycina wszystkie cudzysłowy, tak by nie namieszały w elementach option
+		
 		option.value = tweet.text.replace("\"", "'");
 
-		// dodaje element option do select
 		tweetsSelection.options.add(option);
     }
 	
-	// zaznacza pierwszy element listy rozwijanej jako wybrany
 	tweetsSelection.selectedIndex = 0;
 }
 
 
-// Dzieli jeden długi łańcuch na wiele wierszy 
-// nie dłuższych niż 60 znaków każdy.
-// Zwraca tablicę wierszy.
+
 function splitIntoLines(str) {
 	var strs = new Array();
 	var space = str.indexOf(' ', 60);
@@ -167,7 +140,6 @@ function splitIntoLines(str) {
 	return strs;
 }
 
-// Niespodzianka
 function makeImage() {
 	var canvas = document.getElementById("tshirtCanvas");
 	canvas.onclick = function () {
